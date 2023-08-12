@@ -72,10 +72,8 @@ const checkForWin = (arr, value, moveCounter, boxElem) => {
     if (arr[2][0] == value && arr[1][1] == value && arr[0][2] == value)
       winCombination = [6, 4, 2];
 
-    if (moveCounter < 9) {
+    if (moveCounter <= 9) {
       if (!winCombination.includes("")) {
-        isFinished = true;
-        console.log(winCombination);
         processWinning(winCombination, boxElem);
       }
     } else {

@@ -12,6 +12,8 @@ const boardArr = [
   [" ", " ", " "],
 ];
 let isFinished = false;
+let winCombination = new Array(3);
+winCombination.fill("");
 
 const gameContainer = document.querySelector(`.game-box`);
 const gameBoxes = gameContainer.querySelectorAll(`div`);
@@ -46,8 +48,6 @@ const checkForWin = (arr, value, moveCounter, boxElem) => {
   //move counter for optimisation
   console.log(moveCounter);
   if (moveCounter >= 5) {
-    let winCombination = new Array(3);
-    winCombination.fill("");
     //8 possible combinations
     console.log(`i am here`);
     //lines
@@ -72,11 +72,10 @@ const checkForWin = (arr, value, moveCounter, boxElem) => {
     if (arr[2][0] == value && arr[1][1] == value && arr[0][2] == value)
       winCombination = [6, 4, 2];
 
-    if (moveCounter <= 9) {
-      if (!winCombination.includes("")) {
-        processWinning(winCombination, boxElem);
-      }
-    } else {
+    console.log(winCombination);
+    if (moveCounter <= 9 && !winCombination.includes("")) {
+      processWinning(winCombination, boxElem);
+    } else if (moveCounter === 9 && winCombination.includes("")) {
       processDraw();
     }
   }

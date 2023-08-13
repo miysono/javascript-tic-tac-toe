@@ -38,9 +38,10 @@ const setArrValue = (boxElement, arr, index, value) => {
 
 //change the player by changing the text and the background color.
 const changePlayer = () => {
-  document
-    .querySelector(`.player-container`)
-    .querySelector(`h1`).textContent = `Player ${playerNumber + 1}'s turn!`;
+  if (!isFinished)
+    document
+      .querySelector(`.player-container`)
+      .querySelector(`h1`).textContent = `Player ${playerNumber + 1}'s turn!`;
 };
 
 //check in the array for a winning combination
